@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('members', function (Blueprint $table) {
-            $table->string('code');
+            $table->string('code')->primary();
             $table->string('name');
+            $table->boolean('finalty')->default(false);;
             $table->timestamps();
         });
     }

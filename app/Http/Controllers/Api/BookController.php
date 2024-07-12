@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class BookController extends Controller
 {
     public function index(){
-        $book = Book::latest()->paginate(5);
+        $book = Book::where('stock','!=','0')->paginate(5);
         return new BookResource(true, 'List Data Book', $book);
     }
 
@@ -21,7 +21,7 @@ class BookController extends Controller
             'code'     => 'required',
             'title'   => 'required',
             'author'   => 'required',
-            'stock'   => 'required',
+            'stock'   => 'required|number',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
