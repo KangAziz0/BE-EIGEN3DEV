@@ -23,4 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('/members', MemberController::class);
 Route::apiResource('/books', BookController::class);
-Route::apiResource('/borrowing', BorrowBooksController::class);
+// Route::apiResource('/borrowing', BorrowBooksController::class);
+Route::get('/borrowed-books-count', [BorrowBooksController::class, 'getBorrowedBooksCount']);
+Route::post('/borrow',[BorrowBooksController::class,'borrow']);
+Route::post('/return',[BorrowBooksController::class,'returnBook']);

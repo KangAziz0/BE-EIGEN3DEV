@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->string('code')->primary();
             $table->string('name');
-            $table->boolean('finalty')->default(false);;
+            $table->boolean('finalty')->default(false);
             $table->timestamps();
         });
     }
