@@ -17,14 +17,17 @@ class MembersTableSeeder extends Seeder
             [
                 'code' => 'M001',
                 'name' => 'Angga',
+                'finalty' => true
             ],
             [
                 'code' => 'M002',
                 'name' => 'Ferry',
+                'finalty' => false
             ],
             [
                 'code' => 'M003',
                 'name' => 'Putri',
+                'finalty' => false
             ]
         ]);
     }

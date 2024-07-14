@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('member_id');
             $table->string('book_id');
-            $table->date('borrowed_at');
+            $table->timestamp('borrowed_at');
+            $table->timestamp('returned_at')->nullable();
             $table->foreign('member_id')->references('code')->on('members');
             $table->foreign('book_id')->references('code')->on('books');
             $table->timestamps();
