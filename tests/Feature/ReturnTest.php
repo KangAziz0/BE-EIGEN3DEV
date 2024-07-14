@@ -16,6 +16,11 @@ class ReturnTest extends TestCase
    */
   public function test_borrowed_by_member(): void
   {
+    $this->postJson('/api/borrow', [
+      'member_code' => 'M002',
+      'book_code' => 'TW-11',
+    ]);
+
     $response = $this->postJson('/api/return', [
       'member_code' => 'M002',
       'book_code' => 'TW-11',
@@ -28,7 +33,7 @@ class ReturnTest extends TestCase
     // Simulasikan peminjaman buku
     $this->postJson('/api/borrow', [
       'member_code' => 'M003',
-      'book_code' => 'JK-45',
+      'book_code' => 'SHR-1',
     ]);
 
     // Simulasikan pengembalian buku setelah 8 hari
@@ -36,7 +41,7 @@ class ReturnTest extends TestCase
 
     $response = $this->postJson('/api/return', [
       'member_code' => 'M003',
-      'book_code' => 'JK-45',
+      'book_code' => 'SHR-1',
     ]);
     $response->assertStatus(200);
   }
