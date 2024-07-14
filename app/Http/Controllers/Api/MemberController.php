@@ -17,14 +17,29 @@ class MemberController extends Controller
     {
         $this->member = $member;
     }
-    
-    
+
+    /**
+     * @OA\Get(
+     *     path="/api/members",
+     *     operationId="GetMemberList",
+     *     tags={"Members"},
+     *     summary="Get list of members",
+     *     description="Returns list of members",
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation"
+     *     )
+     * )
+     */
+
+
     public function index()
     {
-        
+
         $member = $this->member->getAll();
         return new MemberResource(true, 'Data Member', $member);
     }
+    
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

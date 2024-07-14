@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->register(\L5Swagger\L5SwaggerServiceProvider::class);
+        
         // Book
         $this->app->bind(BookRepositoryInterface::class,EloquentBookRepository::class);
         $this->app->bind(BookServiceInterface::class,BookService::class);
